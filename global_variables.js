@@ -93,6 +93,8 @@ const programSettings = {
                 "be",
                 "nu",
                 "info",
+                "gov",
+                "biz",
             ],
 
             contains: [

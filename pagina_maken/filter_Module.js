@@ -221,9 +221,8 @@ try {
 
             })(),
 
-            removeUnwantedEnds: (function () {
+            removeUnwantedEnds: (function (rows) {
                 setTimeout(function () {
-                    let rows = document.querySelectorAll('#urlform table tbody tr');
 
                     for (var i = 0; i < rows.length; i++) {
                         let rowItems = rows[i].querySelectorAll("td ul li span");
@@ -262,7 +261,42 @@ try {
                         }
                     }
                 }, 1000);
-            })(),
+            })(tableRows),
+
+            removeDoubleDotsOnEnd: (function(rows) {
+                setTimeout(function () {
+                    for (var i = 0; i < rows.length; i++) {
+                        let rowItems = rows[i].querySelectorAll("td ul li span");
+
+                        // remove end   - and |
+                        for (var j = rowItems.length-1; j > 0; j--) {
+                            let currentItem = rowItems[j].innerHTML
+
+                            if (currentItem.length > 1) {
+                                removeFunction(currentItem, rowItems[j])
+                                break;
+                            }
+                        }
+                        function removeFunction(currentItemString, rowItem) {
+                            if (
+                                currentItemString[currentItemString.length-1] == ":" ||
+                                currentItemString[currentItemString.length-1] == ";" ||
+                                currentItemString[currentItemString.length-1] == ","
+                            ) {
+                                console.log(rowItem)
+
+                                currentItemString = currentItemString[currentItemString.length-2]
+                                rowItem.innerHTML = currentItemString;
+
+                                let id_pos = rowItem.parentElement.id.split("_");
+                                let value = currentItemString;
+
+                                filter_Module.sendAjax(id_pos, value);
+                            }
+                        }
+                    }
+                }, 1500);
+            })(tableRows),
 
             sendAjax: (function(id_pos, value) {
                 const L_ui = document.querySelector('input.hidden').value;
