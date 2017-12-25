@@ -221,9 +221,47 @@ try {
 
             })(),
 
-            removeUnwantedEnds: (function() {
-                let blacklistedItems = ["-","|"];
+            removeUnwantedEnds: (function () {
+                setTimeout(function () {
+                    let rows = document.querySelectorAll('#urlform table tbody tr');
 
+                    for (var i = 0; i < rows.length; i++) {
+                        let rowItems = rows[i].querySelectorAll("td ul li span");
+
+                        // remove front   - and |
+                        for (var j = 0; j < rowItems.length; j++) {
+                            let currentItem = rowItems[j].innerHTML
+
+                            if (currentItem.length < 2) {
+                                removeFunction(currentItem, rowItems)
+                            } else {
+                                break;
+                            }
+                        }
+
+                        // remove end   - and |
+                        for (var j = rowItems.length-1; j > 0; j--) {
+                            let currentItem = rowItems[j].innerHTML
+
+                            if (currentItem.length < 2) {
+                                removeFunction(currentItem, rowItems)
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+
+                    function removeFunction(currentItem, rowItems) {
+                        if (currentItem == "|" || currentItem == "-") {
+
+                            rowItems[j].innerHTML = "";
+                            let id_pos = rowItems[j].parentElement.id.split("_");
+                            let value = rowItems[j].parentElement.children[1].value;
+                            value = "";
+                            filter_Module.sendAjax(id_pos, value);
+                        }
+                    }
+                }, 1000);
             })(),
 
             sendAjax: (function(id_pos, value) {
