@@ -57,12 +57,11 @@ try {
                                             }
 
                                             tag.querySelector('input').value = value;
-                                            const ui = document.querySelector('input.hidden').value;
 
                                             /*removes item from DB*/
                                             if (programSettings.urlRemover.ajaxEnabled) {
                                                 let id_pos = tag.id.split("_");
-                                                sendAjax(ui, id_pos, value);
+                                                filter_Module.sendAjax(id_pos, value);
                                             }
 
                                         }
@@ -220,27 +219,32 @@ try {
                     return string;
                 }
 
-                function sendAjax(ui, id_pos, value) {
-                    const L_ui = ui;
-                    const L_id = id_pos[0];
-                    const L_pos = id_pos[1];
-                    const L_value = value;
+            })(),
 
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("POST", 'http://51.255.87.34/~pagina/ajax/change_tag.php', true);
-
-                    //Send the proper header information along with the request
-                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-                    xhr.onreadystatechange = function() {//Call a function when the state changes.
-                        if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-                            // Request finished. Do processing here.
-                        }
-                    }
-                    xhr.send('ui=' + L_ui + "&id=" + L_id + "&pos=" + L_pos + "&value=" + L_value);
-                }
+            removeUnwantedEnds: (function() {
+                let blacklistedItems = ["-","|"];
 
             })(),
+
+            sendAjax: (function(id_pos, value) {
+                const L_ui = document.querySelector('input.hidden').value;
+                const L_id = id_pos[0];
+                const L_pos = id_pos[1];
+                const L_value = value;
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", 'http://51.255.87.34/~pagina/ajax/change_tag.php', true);
+
+                //Send the proper header information along with the request
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+                xhr.onreadystatechange = function() {//Call a function when the state changes.
+                    if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                        // Request finished. Do processing here.
+                    }
+                }
+                xhr.send('ui=' + L_ui + "&id=" + L_id + "&pos=" + L_pos + "&value=" + L_value);
+            })
         }
     })(programSettings);
 
