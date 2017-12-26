@@ -108,9 +108,18 @@ try {
                     returnedObject = testHandler(testObject, urls)
                     testObject.bool = returnedObject.bool;
 
+                    testObject.testArray = text.split("@");
+                    if (testObject.testArray.length > 1) {
+                        returnedObject = testObject
+                        returnObject.results = "11";
+                        returnObject.bool = false;
+                        testObject.bool = returnedObject.bool;
+                    }
+
+
 
                     /* Remove elements from array based on binaryCode*/
-                    let proccesedArray = removeOnCode(returnedObject.results, testObject.testArray, tag );
+                    let proccesedArray = removeOnCode(returnedObject.results, testObject.testArray, tag);
 
                     /* convert the array back to a string*/
                     value = arrayToString(proccesedArray);

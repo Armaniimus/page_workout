@@ -27,6 +27,7 @@ try {
                     mainInfoSide.style.width = "10%";
                     mainInfoSide.style.cssFloat = "left";
                     mainInfoSide.style.borderLeft = "1px solid black";
+                    mainInfoSide.style.backgroundColor = "#ddd";
                     mainInfoSide.style.fontSize = "16px";
                     mainInfoSide.style.fontWeight = "bold"
 
@@ -120,9 +121,9 @@ try {
 
             const addEventListeners2 = (function(categories, dataArray) {
                 for (let i = 0; i < categories.length; i++) {
-                    categories[i].id = "category" + i
+                    categories[i].id = "category" + i;
                     categories[i].addEventListener("click", function(e) {
-                        handleInfo(e, categories[i], i, dataArray)
+                        handleInfo(e, categories[i], i, dataArray);
                     }, true);
                 }
             })(categories, dataArray)
