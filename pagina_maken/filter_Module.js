@@ -44,7 +44,7 @@ try {
                                         value = testFunctions(text, removeListWrap, tag)
 
                                         if (value !== false) {
-                                            console.log(value);
+                                            // console.log(value);
 
                                             /* replaces the original dom items with the newly computed one*/
                                             if (programSettings.urlRemover.testColoring) {
@@ -63,7 +63,6 @@ try {
                                                 let id_pos = tag.id.split("_");
                                                 filter_Module.sendAjax(id_pos, value);
                                             }
-
                                         }
                                     }
                                 }, 1000);
@@ -72,7 +71,7 @@ try {
                     })();
                 }
 
-                function testFunctions(text, removeListWrap, tag) {try {
+                function testFunctions(text, removeListWrap, tag) {
 
                     /*set local removelists*/
                     let shortIcons = removeListWrap.shortIcons;
@@ -85,7 +84,6 @@ try {
                     let returnedObject = {};
                     let testObject = {};
                     testObject.testArray = [text];
-                    testObject.results = "";
                     testObject.bool = true;
 
                     /* create value variable*/
@@ -109,26 +107,17 @@ try {
                     testObject.bool = returnedObject.bool;
 
                     testObject.testArray = text.split("@");
-                    if (testObject.testArray.length > 1) {
+                    if (testObject.testArray.length > 1 && testObject.bool == true) {
                         returnedObject = testObject
-                        returnObject.results = "11";
                         returnObject.bool = false;
                         testObject.bool = returnedObject.bool;
                     }
-
-
-
-                    /* Remove elements from array based on binaryCode*/
-                    let proccesedArray = removeOnCode(returnedObject.results, testObject.testArray, tag);
-
-                    /* convert the array back to a string*/
-                    value = arrayToString(proccesedArray);
 
                     /* handle end of the testfunctions*/
                     if (testObject.bool) {
                         return false;
                     } else {
-                        return value;
+                        return "";
                     }
 
                     /*Testing proxy*/
@@ -141,20 +130,13 @@ try {
                         }
                     }
 
-                } catch(err) {
-
-                    setTimeout(function () {
-                        alert("testFunction Error")
-                        console.log(err)
-                    }, 50);
-                }};
+                };
 
 
                 //creates a binaryCode to use later
 
                 function createBinaryRemoveCode(object, removeList) {
                     let testArray = object.testArray;
-                    let results = "";
                     let bool = object.bool;
                     let res;
 
@@ -173,61 +155,15 @@ try {
 
                         /*create the binarycode*/
                         if (res === true) {
-                            results += "1";
                             bool = false
-                        } else if (res === false) {
-                            results += "0";
                         }
                     }
 
                     /*returns the object*/
-                    object.results = results;
                     object.bool = bool;
 
                     return (object);
                 }
-
-                function removeOnCode(removeCode, testArray, element) {
-                    if (programSettings.removeOnCode.methodEnabled) {
-                        const removeCodeArray = removeCode.split("");
-
-                        for (let i=testArray.length-1;  i>-1;  i--) {
-                            if (removeCodeArray[i] == '1') {
-                                testArray = [""];
-
-                                if (programSettings.removeOnCode.colorAffectedElements) {
-                                    element.style.backgroundColor = "#222";
-                                    element.style.color = "#444";
-                                    element.style.borderColor = "black";
-                                }
-                                if (programSettings.removeOnCode.testlog1) {
-                                    console.log(1)
-                                }
-                            }
-                            else if (removeCodeArray[i] == '0') {
-                                if (programSettings.removeOnCode.testlog0) {
-                                    console.log(0);
-                                }
-                            } else {
-                                alert("removeCodeBroke");
-                            }
-                        }
-                    }
-                    return testArray;
-                }
-
-                function arrayToString(array) {
-                    let string = "";
-                    for (var i = 0; i < array.length; i++) {
-                        string += array[i];
-
-                        if (programSettings.arrayToString.addDot) {
-                            string += ".";
-                        }
-                    }
-                    return string;
-                }
-
             })(),
 
             removeUnwantedEnds: (function (rows) {
@@ -292,7 +228,6 @@ try {
                                 currentItemString[currentItemString.length-1] == ";" ||
                                 currentItemString[currentItemString.length-1] == ","
                             ) {
-                                console.log(rowItem)
 
                                 currentItemString = currentItemString[currentItemString.length-2]
                                 rowItem.innerHTML = currentItemString;
@@ -312,6 +247,9 @@ try {
                 const L_id = id_pos[0];
                 const L_pos = id_pos[1];
                 const L_value = value;
+
+                // alert(L_ui);
+                // alert(L_id + " " + L_pos + " " + value)
 
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", 'http://51.255.87.34/~pagina/ajax/change_tag.php', true);
