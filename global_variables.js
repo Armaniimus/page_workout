@@ -47,6 +47,8 @@ const programSettings = {
             longIcons: [
                 "--",
                 "->",
+                "••>",
+                "<••",
                 "<-",
                 "&gt;",
                 "&gt;&gt;",

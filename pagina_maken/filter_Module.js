@@ -123,7 +123,7 @@ try {
                     if (testObject.bool) {
                         let textArray = text.split("");
 
-                        if (charactersBlacklisTest(textArray[0]) ) {
+                        if (charactersBlacklisTest(textArray[0]) || textArray[0] == "'" ) {
                             testObject.bool = false;
                         } else {
                             value += textArray[0];
@@ -200,6 +200,11 @@ try {
                         "[",
                         "]",
                         '"',
+                        "•",
+                        "<",
+                        ">",
+                        "&gt;",
+                        "&lt;",
                     ]
                     for (var i = 0; i < charArray.length; i++) {
                         if (char == charArray[i]) {
