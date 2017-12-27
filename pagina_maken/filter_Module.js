@@ -89,6 +89,11 @@ try {
                     /* create value variable*/
                     let value = "";
 
+                    if (text.length > 35) {
+                        returnObject.bool = false;
+                        testObject.bool = returnedObject.bool;
+                    }
+
                     /* create a binary removeCode*/
                     returnedObject = testHandler(testObject, shortIcons)
                     testObject.bool = returnedObject.bool;
@@ -161,7 +166,6 @@ try {
 
                     /*returns the object*/
                     object.bool = bool;
-
                     return (object);
                 }
             })(),
