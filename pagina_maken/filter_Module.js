@@ -117,12 +117,33 @@ try {
                         returnObject.bool = false;
                         testObject.bool = returnedObject.bool;
                     }
+                    value = "";
+
+                    // if all other test are positive run this one
+                    if (testObject.bool) {
+                        let textArray = text.split("");
+
+                        if (charactersBlacklisTest(textArray[0]) ) {
+                            testObject.bool = false;
+                        } else {
+                            value += textArray[0];
+                        }
+
+                        for (var i = 1; i < textArray.length; i++) {
+                            if (charactersBlacklisTest(textArray[i]) ) {
+                                testObject.bool = false;
+                            } else {
+                                let thischar = textArray[i];
+                                value += thischar.toLowerCase();
+                            }
+                        }
+                    }
 
                     /* handle end of the testfunctions*/
                     if (testObject.bool) {
                         return false;
                     } else {
-                        return "";
+                        return value;
                     }
 
                     /*Testing proxy*/
@@ -153,7 +174,8 @@ try {
                             for (var i = 0; i < removeList.length; i++) {
                                 if (string.toLowerCase() == removeList[i]) {
                                     return true;
-                                };
+
+                                }
                             }
                             return false;
                         })(testArray[i], removeList);
@@ -167,6 +189,24 @@ try {
                     /*returns the object*/
                     object.bool = bool;
                     return (object);
+                }
+
+                function charactersBlacklisTest(char) {
+                    charArray = [
+                        "(",
+                        ")",
+                        "{",
+                        "}",
+                        "[",
+                        "]",
+                        '"',
+                    ]
+                    for (var i = 0; i < charArray.length; i++) {
+                        if (char == charArray[i]) {
+                            return true;
+                        }
+                    }
+                    return false;
                 }
             })(),
 

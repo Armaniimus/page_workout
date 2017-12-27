@@ -12,19 +12,8 @@ const programSettings = {
         yellow: false
     },
 
-    arrayToString: {
-        addDot: false
-    },
-
     smokeTest: {
         methodEnabled: false
-    },
-
-    removeOnCode: {
-        methodEnabled: true,
-        colorAffectedElements: false,
-        testlog0: false,
-        testlog1: false
     },
 
     urlRemover: {
@@ -57,6 +46,8 @@ const programSettings = {
 
             longIcons: [
                 "--",
+                "->",
+                "<-",
                 "&gt;",
                 "&gt;&gt;",
             ],
