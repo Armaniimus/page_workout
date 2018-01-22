@@ -14,8 +14,10 @@ try {
                     mainInfoBar.id = "mainInfoBar";
                     mainInfoBar.style.width = "100%"
                     mainInfoBar.style.position = "fixed";
-                    mainInfoBar.style.backgroundColor = "grey";
-                    mainInfoBar.style.border = "1px solid black";
+                    // mainInfoBar.style.backgroundColor = "grey";
+                    mainInfoBar.style.backgroundColor = "#ddd";
+                    mainInfoBar.style.borderBottom = "1px solid #aaa";
+                    // mainInfoBar.style.border = "1px solid black";
                 document.body.appendChild(mainInfoBar);
 
                 let mainInfo = document.createElement("div");
@@ -26,8 +28,9 @@ try {
                 let mainInfoSide = document.createElement("div")
                     mainInfoSide.style.width = "10%";
                     mainInfoSide.style.cssFloat = "left";
-                    mainInfoSide.style.borderLeft = "1px solid black";
-                    mainInfoSide.style.backgroundColor = "#ddd";
+                    mainInfoSide.style.borderLeft = "1px solid #aaa";
+                    mainInfoSide.style.backgroundColor = "#eee";
+
                     mainInfoSide.style.fontSize = "16px";
                     mainInfoSide.style.fontWeight = "bold"
 
@@ -81,6 +84,7 @@ try {
                     mainInfoBox[i].style.height = "25px";
                     mainInfoBox[i].style.backgroundColor = "red";
                     mainInfoBox[i].style.border = "1px solid black";
+                    mainInfoBox[i].style.borderRadius = "25px";
                     mainInfoBox[i].style.fontSize = "16px";
                     mainInfoBox[i].style.fontWeight = "bold";
                     mainInfoBox[i].style.textAlign = "center";
@@ -108,8 +112,12 @@ try {
                         categories += 1
                         links += dataArray[i];
                         thisCategory.style.backgroundColor = "green";
+                        thisCategory.style.color = "#ccc";
+                        thisCategory.style.borderColor = "#333";
                     } else {
                         thisCategory.style.backgroundColor = "red";
+                        thisCategory.style.color = "black";
+                        thisCategory.style.borderColor = "black";
                     }
                     thisCategory.innerHTML = dataArray[i]
                 }
