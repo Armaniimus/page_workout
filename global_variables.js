@@ -68,6 +68,7 @@ const programSettings = {
 
             isBetweenDots: [
                 "startpagina",
+                "youtube",
                 "wikipedia",
                 "facebook",
                 "twitter",
