@@ -135,6 +135,10 @@ try {
                             } else {
                                 let thischar = textArray[i];
                                 value += thischar.toLowerCase();
+
+                                if (thischar.toLowerCase() !== thischar) {
+                                    testObject.bool = false;
+                                }
                             }
                         }
                     }
