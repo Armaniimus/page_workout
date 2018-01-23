@@ -160,7 +160,7 @@ try {
             for (var j = 0; j < categories.length; j++) {
                 categories[j].click()
             }
-        }, 2000);
+        }, 500);
         // categories[3].click()
         // alert(categories.length)
     }
