@@ -219,7 +219,7 @@ try {
 
                                 saveRowData.push(string);
                                 checkbox.checked = true;
-                                sendSubmitAjax(rowItems[i].parentElement)
+                                sendSubmitShizzle(rowItems[i].parentElement)
                                 setClasses(rowItems, i);
                                 let obj = {res: true, rowData: saveRowData}
 
@@ -255,12 +255,12 @@ try {
 
     function setBotData(botData) {
         if (botData.odd) {
-            botData.max = 7;
+            botData.max = 3;
             botData.min = 4;
             botData.odd = false;
 
         } else {
-            botData.max = 3;
+            botData.max = 0;
             botData.min = 1;
             botData.odd = true;
         }
@@ -268,7 +268,7 @@ try {
         return botData;
     }
 
-    function sendSubmitAjax(parent) {
+    function sendSubmitShizzle(parent) {
         try {
             let info = parent.id.split("_");
 
@@ -302,7 +302,7 @@ try {
         if (saveRowData.length == 0) {
             return true
         }
-        
+
         for (var i = 0; i < saveRowData.length; i++) {
             let item1 = string
             let item2 = saveRowData[i];
