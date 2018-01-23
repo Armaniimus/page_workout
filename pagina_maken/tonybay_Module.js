@@ -157,10 +157,10 @@ try {
         }
 
         setTimeout(function () {
-            for (var j = 1; j < categories.length; j++) {
-                categories[j-1].click()
+            for (var j = 0; j < categories.length; j++) {
+                categories[j].click()
             }
-        }, 3000);
+        }, 2000);
         // categories[3].click()
         // alert(categories.length)
     }
@@ -208,13 +208,14 @@ try {
                     testString = rowItems[i-1].innerHTML
 
                     //if not oke
-                    if (testString.length < 4) {
+                    if (testString.length < 5) {
                         return false
 
                     // if oke
                     } else {
-                        if (string.length < 46) {
-                            if (notDouble(saveRowData, string) ) {
+                        if (string.length < 46 && string.length > 4) {
+                            let test = notDouble(saveRowData, string)
+                            if (test) {
 
                                 saveRowData.push(string);
                                 checkbox.checked = true;
@@ -267,10 +268,6 @@ try {
         return botData;
     }
 
-
-
-
-
     function sendSubmitAjax(parent) {
         try {
             let info = parent.id.split("_");
@@ -305,6 +302,7 @@ try {
         if (saveRowData.length == 0) {
             return true
         }
+        
         for (var i = 0; i < saveRowData.length; i++) {
             let item1 = string
             let item2 = saveRowData[i];
