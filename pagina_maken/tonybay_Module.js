@@ -140,7 +140,16 @@
 
 
 try {
-    loopOverCategory();
+
+    const addEventListener = (function () {
+        window.addEventListener("keyup", function(e) {
+            if (e.shiftKey === true) {
+                if ( e.key.toLowerCase() === "d") {
+                    loopOverCategory();
+                }
+            }
+        }, 1 );
+    })()
 
     function loopOverCategory() {
 
@@ -156,11 +165,9 @@ try {
             loopOverRows(rows, botData)
         }
 
-        setTimeout(function () {
-            for (var j = 0; j < categories.length; j++) {
-                categories[j].click()
-            }
-        }, 500);
+        for (var j = 0; j < categories.length; j++) {
+            categories[j].click()
+        }
         // categories[3].click()
         // alert(categories.length)
     }
