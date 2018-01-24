@@ -233,8 +233,6 @@ try {
 
                                 return obj
                             }
-                            // let parent = rowItems[i].parentElement;
-                            // return string;
                         }
                     }
                     return false
@@ -262,13 +260,13 @@ try {
 
     function setBotData(botData) {
         if (botData.odd) {
-            botData.max = 3;
-            botData.min = 4;
+            botData.max = 7;
+            botData.min = 7;
             botData.odd = false;
 
         } else {
-            botData.max = 0;
-            botData.min = 1;
+            botData.max = 7;
+            botData.min = 7;
             botData.odd = true;
         }
 

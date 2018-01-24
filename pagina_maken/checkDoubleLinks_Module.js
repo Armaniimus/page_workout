@@ -52,7 +52,7 @@ const checkDoubleLinks_Module = (function (programSettings) {
                             let result = testStringDifferences_Module.p_all(item1, item2, 3, 20)
 
                             if(result) {
-                                rows[2+(j*2)].children[1].style.backgroundColor = "red";
+                                rows[2+(j*2)].children[1].style.backgroundColor = "black";
                                 rows[2+(j*2)].classList.add("wrongLink");
                                 return false
                             }
